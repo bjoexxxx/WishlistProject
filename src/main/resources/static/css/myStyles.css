@@ -9,6 +9,7 @@ ul {
 li {
     float: left;
     font-size: x-large;
+    font-family: Verdana;
 }
 
 li a {
