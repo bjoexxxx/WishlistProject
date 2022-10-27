@@ -21,13 +21,18 @@ public class WishRepository {
     @Value("${spring.datasource.password}")
     private String pas;
 
+
+
+    private String pstsGetAll = "SELECT * FROM wish";
+    private String pstsAddUser = "INSERT INTO 'user' (first_name,last_name) VALUES (?,?)";
+
     public List<Object> getAll() {
 
 
         List<Object> list = new LinkedList<>();
         try {
             Connection conn = DriverManager.getConnection(db_url, uid, pas);
-            PreparedStatement psts = conn.prepareStatement("SELECT * FROM wish");
+            PreparedStatement psts = conn.prepareStatement(pstsGetAll);
             ResultSet resultSet = psts.executeQuery();
             while (resultSet.next()) {
                 list.add(new Object());
