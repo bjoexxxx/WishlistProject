@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>index</title>
+  <meta charset="UTF-8">
+  <title>hey</title>
+  <link rel="stylesheet" th:href="@{css/myStyles.css}" href="../../static/css/myStyles.css"/>
+
+
 </head>
-<body>
+<body style="background-color:whitesmoke">
+<div style="background-color: white">
 
-<div class="search-bar">
-    <form action="/search" method="post">
-        <input type="hidden" name="ID" th:value="${Wishlists.ID}">
-
-        <label for="search_field">Search Wishlists</label>
-        <input id="search_field" name="FirstName" th:value="${Wishlists.FirstName}">
-
-        <button type="submit">Search</button>
-    </form>
+  <div>
+<img class="logocorner" src="/static/images/skyen.png" th:src="@{/images/skyen.png}" width="155,04" height="32,64">
+  </div>
+  <div>
+<ul class="menubarcorner">
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+  </div>
 </div>
+
+<table class="center" table style="background-color: lightgrey; padding-top: 90px">
+  <tr>
+    <th>Ønskeliste navn</th>
+    <th>ønskliste nr</th>
+
+  </tr>
+  <tr th:each="w : ${wishes}">
+    <td> <span th:text="${w.wish_user}">user</span> </td>
+    <td> <span th:text="${w.wish_id}">id</span> </td>
+
+  </tr>
+</table>
 
 </body>
 </html>
