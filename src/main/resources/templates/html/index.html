@@ -27,11 +27,13 @@
   <tr>
     <th>Ønskeliste navn</th>
     <th>ønskliste nr</th>
+    <th>Se ønsker i liste</th>
 
   </tr>
   <tr th:each="w : ${wishes}">
     <td> <span th:text="${w.wish_user}">user</span> </td>
     <td> <span th:text="${w.wish_id}">id</span> </td>
+    <td> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">tryk her for at se ønsker</a> </td>
 
   </tr>
 </table>
