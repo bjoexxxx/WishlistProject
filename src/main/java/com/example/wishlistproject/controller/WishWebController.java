@@ -8,7 +8,7 @@ public class WishWebController {
 
     @GetMapping("/")
     public String showIndex(){
-        return "index";
+        return "html/index";
     }
 
 
