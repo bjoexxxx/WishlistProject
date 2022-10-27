@@ -3,28 +3,67 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: white;
 }
 
 li {
     float: left;
+    font-size: x-large;
 }
 
 li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 li a:hover {
-    background-color: #111;
+    background-color: lightgray;
 }
 
 .active {
-    background-color: #04AA6D;
+    background-color: cornflowerblue;
 }
 
 logo {
+}
+.logocorner {
+    position: absolute;
+    left: 8px;
+    top: 18px;
+}
+
+ul.menubarcorner{
+    position: relative;
+    left: 200px;
+}
+
+background{
+background-color: darkgray;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 75%;
+    border-radius: 5px;
+}
+table.center {
+    margin-left:auto;
+    margin-right:auto;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    width: 10%;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    width: 10%;
 }
