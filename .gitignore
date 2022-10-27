@@ -32,5 +32,11 @@ build/
 ### VS Code ###
 .vscode/
 
-src/main/application/.properties
+src/main/resources/application/.properties
 application.properties
+
+src/main/java/repository/HiddenInfo
+HiddenInfo
+
+
+
