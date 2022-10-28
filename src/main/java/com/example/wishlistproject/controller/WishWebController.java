@@ -37,7 +37,7 @@ public class WishWebController {
 
     @GetMapping("/showWishes/{id}")
     public String showWishes(@PathVariable("id") int id, Model model) {
-        model.addAttribute("wishes", wishRepository.findWishesById(id));
+        model.addAttribute("wishes", wishRepository.selectWishlist(id));
         return "html/wishlistWishes";
     }
 
