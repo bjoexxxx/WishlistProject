@@ -1,6 +1,7 @@
 package com.example.wishlistproject.repository;
 
 import com.example.wishlistproject.model.Wishlist;
+import com.example.wishlistproject.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -78,5 +79,18 @@ public class WishRepository {
 
     public Object findWishesById(int wishlistId) {
         return null; //todo
+    }
+
+    public void createWishlist(Wishlist wishlist, int userId) {
+        // TODO
+    }
+
+    public void createUser(User user) {
+        //TODO
+    }
+
+
+    public int findUserIdByName(String userFirstName, String userLastName) {
+        return 0; //TODO
     }
 }
