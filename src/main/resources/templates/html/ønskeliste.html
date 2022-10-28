@@ -16,27 +16,25 @@
   <div>
     <ul class="menubarcorner">
       <li><a class="active" href="#home">Home</a></li>
-      <li><a href="#news">Ønsker</a></li>
-      <li><a href="#contact">Kontakt os</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#news">Wihslist</a></li>
+      <li><a href="#contact">Contact us</a></li>
+      <li><a href="#about">About us</a></li>
     </ul>
   </div>
 </div>
-<h1 style="padding-left: 400px">Ønsker til ønkselisten</h1>
+<h1 style="padding-left: 400px">Wishes for the wishlist</h1>
 
-<table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+<table class="center"  style="background-color: cornflowerblue; margin-top:50px">
   <tr>
-    <th>Produkt</th>
-    <th>Pris</th>
-    <th>Antal</th>
+    <th>Product</th>
+    <th>Price</th>
 
   </tr>
   <tr th:each="w : ${products}">
-    <td> <span th:text="${p.product_name}">productnavn</span> </td>
-    <td> <span th:text="${p.product_price}">pris</span> </td>
-    <td> <span th:text="${p.product_quantity}">antal</span> </td>
-    <td> fjern </td>
-    <td> rediger </td>
+    <td> <span th:text="${p.product_name}">Product name</span> </td>
+    <td> <span th:text="${p.product_price}">Price</span> </td>
+    <td> remove </td>
+    <td> Edit </td>
   </tr>
 
 </table>
@@ -45,13 +43,11 @@
 
   <form action="/create" method="post">
   <tr>
-    <td>   <label for="product-name">Produkt navn</label>
-      <input id="product-name" name="navn"> </td>
-    <td> <label for="price-field">Pris: </label>
-      <input type="number" id="price-field" name="price"> </td>
-    <td>   <label for="antal">Antal: </label>
-      <input type="antal" id="antal" name="antal"> </td>
-    <td>   <button type="submit">Opret ønske</button>
+    <td>
+      <input id="product-name" name="navn" placeholder="Product name"> </td>
+    <td>
+      <input type="number" id="price-field" name="price" placeholder="Price"> </td>
+    <td>   <button type="submit">Create wish</button>
     </td>
   </tr>
 </table>

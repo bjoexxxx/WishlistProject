@@ -16,25 +16,35 @@
   <div>
     <ul class="menubarcorner">
       <li><a class="active" href="#home">Home</a></li>
-      <li><a href="#news">Ønsker</a></li>
-      <li><a href="#contact">Kontakt os</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#news">Wishlist</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#about">About us</a></li>
     </ul>
   </div>
 </div>
 
 <table class="center" table style="background-color: cornflowerblue; margin-top:50px">
   <tr>
-    <th>Ønskeliste navn</th>
-    <th>ønskliste nr</th>
-    <th>Se ønsker i liste</th>
+    <th>Wishlist name</th>
+    <th>Wishlist nr.</th>
+    <th>See wishes in list</th>
 
   </tr>
   <tr th:each="w : ${wishes}">
     <td> <span th:text="${w.wish_user}">user</span> </td>
     <td> <span th:text="${w.wish_id}">id</span> </td>
-    <td> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">tryk her for at se ønsker</a> </td>
+    <td> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Press to see wishes</a> </td>
   </tr>
+</table>
+
+<table class="center" table style="background-color: lightyellow; margin-top:50px">
+
+  <form action="/create" method="post">
+    <tr>
+      <td> <input id="wishlist-name" navn="navn" placeholder="Wishlist name"> </td>
+      <td>   <button type="submit">Create wishlist</button>
+      </td>
+    </tr>
 </table>
 
 </body>
