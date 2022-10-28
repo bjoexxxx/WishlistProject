@@ -31,9 +31,9 @@
     <th>See wishes in list</th>
 
   </tr>
-  <tr th:each="w : ${wishes}">
-    <td> <span th:text="${w.wish_user}">user</span> </td>
-    <td> <span th:text="${w.wish_id}">id</span> </td>
+  <tr th:each="w : ${wishlist}">
+    <td> <span th:text="${w.wishlist_name}">Name</span> </td>
+    <td> <span th:text="${w.wishlist_userId}">id</span> </td>
     <td> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Press to see wishes</a> </td>
   </tr>
 </table>
