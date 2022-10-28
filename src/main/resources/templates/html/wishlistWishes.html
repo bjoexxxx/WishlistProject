@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>hey</title>
-    <link rel="stylesheet" th:href="@{css/myStyles.css}" href="../../static/css/myStyles.css"/>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
 
 
 
@@ -16,8 +16,8 @@
     </div>
     <div>
         <ul class="menubarcorner">
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#news">Wishlist</a></li>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="/">Wishlist</a></li>
             <li><a href="#contact">Contact Us</a></li>
             <li><a href="#about">About us</a></li>
         </ul>
@@ -26,24 +26,18 @@
 
 <table class="center" table style="background-color: cornflowerblue; margin-top:50px">
     <tr>
-        <th>Wishlist name</th>
-        <th>Wishlist nr.</th>
-        <th>See wishes in list</th>
-
+        <th>Wish ID</th>
+        <th>Wish Name</th>
+        <th>Price</th>
+        <th>WishlistID</th>
     </tr>
-    <tr th:each="w : ${wishlists}">
-        <td> <span th:text="${w.wishlist_name}">Name</span> </td>
-        <td> <span th:text="${w.wishlist_userId}">id</span> </td>
-        <td> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Press to see wishes</a> </td>
-
-        <div th:each="p : ${products}">
-            <span th:text="${p.id}">id</span>
-            <span th:text="${p.name}">navn</span>
-            <span th:text="${p.price}">pris</span>
-            <span><a th:href="@{'/update/' + ${p.id}}">Opdater</a></span>
-            <span><a th:href="@{'/delete/' + ${p.id}}">Delete</a></span>
+    <tr>
+        <div th:each="w : ${wishes}">
+            <span th:text="${w.wishID}">Id</span>
+            <span th:text="${w.wish_name}">Name</span>
+            <span th:text="${w.wish_price}">Price</span>
+            <span th:text="${w.wishlistID}">WishlistID</span>
         </div>
-
     </tr>
 </table>
 

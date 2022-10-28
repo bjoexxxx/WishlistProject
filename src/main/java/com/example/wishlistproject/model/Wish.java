@@ -14,11 +14,14 @@ public class Wish {
         this.wishlistID = wishlistID;
     }
 
-    public int getWishID(){
+    public Wish() {
+    }
+
+    public int getWishID() {
         return wishID;
     }
 
-    public void setWishID(int wishID){
+    public void setWishID(int wishID) {
         this.wishID = wishID;
     }
 
@@ -38,11 +41,21 @@ public class Wish {
         this.wish_price = wish_price;
     }
 
+    public int getWishlistID() {
+        return wishlistID;
+    }
+
+    public void setWishlistID(int wishlistID) {
+        this.wishlistID = wishlistID;
+    }
+
     @Override
     public String toString() {
         return "Wish{" +
-                "wish_name='" + wish_name + '\'' +
+                "wishID=" + wishID +
+                ", wish_name='" + wish_name + '\'' +
                 ", wish_price=" + wish_price +
+                ", wishlistID=" + wishlistID +
                 '}';
     }
 }
