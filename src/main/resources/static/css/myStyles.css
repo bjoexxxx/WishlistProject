@@ -48,7 +48,7 @@ background{
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 25%;
+    width: 50%;
     border-radius: 5px;
 }
 table.center {
@@ -67,4 +67,9 @@ tr:nth-child(even) {
     border: 1px solid #dddddd;
     padding: 8px;
     width: 10%;
+}
+
+center {
+    margin-left: auto;
+    margin-right: auto;
 }
