@@ -64,6 +64,7 @@ public class WishRepository {
 
     public Object selectWishlist(int wishlistId) {
 
+
         List<Wish> wishes = new LinkedList<>();
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
