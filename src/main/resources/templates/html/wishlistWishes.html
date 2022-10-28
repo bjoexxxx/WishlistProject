@@ -31,13 +31,12 @@
         <th>Price</th>
         <th>WishlistID</th>
     </tr>
-    <tr>
-        <div th:each="w : ${wishes}">
-            <span th:text="${w.wishID}">Id</span>
-            <span th:text="${w.wish_name}">Name</span>
-            <span th:text="${w.wish_price}">Price</span>
-            <span th:text="${w.wishlistID}">WishlistID</span>
-        </div>
+    <tr th:each="w : ${wishes}">
+
+           <td> <span th:text="${w.wishID}">Id</span> </td>
+        <td> <span th:text="${w.wish_name}">Name</span></td>
+        <td>  <span th:text="${w.wish_price}">Price</span></td>
+        <td>   <span th:text="${w.wishlistID}">WishlistID</span></td>
     </tr>
 </table>
 
