@@ -2,38 +2,38 @@ package com.example.wishlistproject.model;
 
 public class Wish {
 
-    private String product_name;
-    private double product_price;
+    private String wish_name;
+    private double wish_price;
 
-    public Wish(String product_name, double product_price) {
-        this.product_name = product_name;
-        this.product_price = product_price;
+    public Wish(String wish_name, double wish_price) {
+        this.wish_name = wish_name;
+        this.wish_price = wish_price;
     }
 
     public Wish() {
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getWish_name() {
+        return wish_name;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setWish_name(String wish_name) {
+        this.wish_name = wish_name;
     }
 
-    public double getProduct_price() {
-        return product_price;
+    public double getWish_price() {
+        return wish_price;
     }
 
-    public void setProduct_price(double product_price) {
-        this.product_price = product_price;
+    public void setWish_price(double wish_price) {
+        this.wish_price = wish_price;
     }
 
     @Override
     public String toString() {
         return "Wish{" +
-                "product_name='" + product_name + '\'' +
-                ", product_price=" + product_price +
+                "wish_name='" + wish_name + '\'' +
+                ", wish_price=" + wish_price +
                 '}';
     }
 }

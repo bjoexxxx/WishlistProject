@@ -17,14 +17,15 @@ public class WishWebController {
     }
 
     @GetMapping("/")
-    public String showIndex(){
+    public String showIndex(Model model){
+        model.addAttribute("wishlists",wishRepository.getAll());
         return "html/index";
     }
 
 
     @GetMapping("/showWishlists")
     public String showWishLists (Model model) {
-        model.addAttribute("wishlists",wishRepository.getAllWishlists());
+        model.addAttribute("wishlists",wishRepository.getAll());
         return "html/index";
 
     }

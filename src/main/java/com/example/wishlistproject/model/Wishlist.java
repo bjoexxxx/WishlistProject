@@ -4,10 +4,12 @@ public class Wishlist {
 
     private String wishlist_name;
     private int wishlist_userId;
+    private int wishlistId;
 
-    public Wishlist(String wishlist_name, int wishlist_userId) {
+    public Wishlist(String wishlist_name, int wishlist_userId, int wishlistId) {
         this.wishlist_name = wishlist_name;
         this.wishlist_userId = wishlist_userId;
+        this.wishlistId = wishlistId;
     }
 
     public Wishlist() {
@@ -29,11 +31,20 @@ public class Wishlist {
         this.wishlist_userId = wishlist_userId;
     }
 
+    public int getWishlistId() {
+        return wishlistId;
+    }
+
+    public void setWishlistId(int wishlistId) {
+        this.wishlistId = wishlistId;
+    }
+
     @Override
     public String toString() {
         return "Wishlist{" +
                 "wishlist_name='" + wishlist_name + '\'' +
                 ", wishlist_userId=" + wishlist_userId +
+                ", wishlistId=" + wishlistId +
                 '}';
     }
 }

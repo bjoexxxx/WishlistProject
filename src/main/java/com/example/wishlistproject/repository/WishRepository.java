@@ -40,7 +40,7 @@ public class WishRepository {
                 int id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 int userid = resultSet.getInt(3);
-                list.add(new Wishlist(name, id));
+                list.add(new Wishlist(name, id, userid));
                 System.out.println(id + name + userid);
 
             }
