@@ -56,6 +56,7 @@ public class WishWebController {
 
         wishRepository.createUser(user);
         int userId = wishRepository.findUserIdByName(userFirstName, userLastName);
+        model.addAttribute("userId",userId);
         wishRepository.createWishlist(newWishlist, userId);
 
 
