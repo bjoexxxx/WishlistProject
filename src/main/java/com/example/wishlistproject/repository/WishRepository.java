@@ -31,6 +31,7 @@ public class WishRepository {
     private String pstsAddUser = "INSERT INTO 'user' (first_name,last_name) VALUES (?,?)";
     private String pstsGetAllWishlists = "SELECT * FROM wishlist";
     private String pstsGetSpecificWishlist = "SELECT * FROM wish WHERE wishlistid=?";
+    private String pstsCreateWishlist = "insert into 'wishlist'(`name`,userid) VALUES(?,?)";
 
     public List<Wishlist> getAllWishLists() {
 
@@ -90,6 +91,19 @@ public class WishRepository {
     }
 
     public void createWishlist(Wishlist wishlist, int userId) {
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsCreateWishlist);
+            psts.setString(1,wishlist.getWishlist_name());
+            psts.setInt(2,userId);
+            psts.executeQuery();
+
+
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
         // TODO
     }
 

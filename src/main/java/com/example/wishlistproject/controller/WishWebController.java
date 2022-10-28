@@ -52,6 +52,7 @@ public class WishWebController {
         model.addAttribute("user_first_name", userFirstName);
         model.addAttribute("user_last_name", userLastName);
 
+
         User user = new User();
         Wishlist newWishlist = new Wishlist();
 
