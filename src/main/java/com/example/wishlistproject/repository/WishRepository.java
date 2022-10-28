@@ -12,13 +12,13 @@ import java.util.List;
 public class WishRepository {
 
 
-    @Value("${spring.datasource.url}")
+    @Value("${JDBCUrl}")
     private String db_url;
 
-    @Value("${spring.datasource.username}")
+    @Value("${JDBCUsername}")
     private String uid;
 
-    @Value("${spring.datasource.password}")
+    @Value("${JDBCPassword}")
     private String pas;
 
 
