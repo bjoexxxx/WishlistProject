@@ -21,7 +21,8 @@ public class WishWebController {
     }
 
     @GetMapping("/")
-    public String showIndex() {
+    public String showIndex(Model model) {
+        model.addAttribute("wishlists", wishRepository.getAll());
         return "html/index";
     }
 
