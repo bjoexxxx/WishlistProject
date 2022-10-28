@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>hey</title>
+    <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
+
+
+
+</head>
+<body style="background-color:whitesmoke">
+<div style="background-color: white">
+
+    <div>
+        <img class="logocorner" src="/static/images/skyen.png" th:src="@{/images/skyen.png}" width="155,04" height="32,64">
+    </div>
+    <div>
+        <ul class="menubarcorner">
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="/">Wishlist</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#about">About us</a></li>
+        </ul>
+    </div>
+</div>
+
+<table class="center" table style="background-color: cornflowerblue; margin-top:50px">
+    <tr>
+        <th>Wish ID</th>
+        <th>Wish Name</th>
+        <th>Price</th>
+        <th>WishlistID</th>
+    </tr>
+    <tr>
+        <div th:each="w : ${wishes}">
+            <span th:text="${w.wishID}">Id</span>
+            <span th:text="${w.wish_name}">Name</span>
+            <span th:text="${w.wish_price}">Price</span>
+            <span th:text="${w.wishlistID}">WishlistID</span>
+        </div>
+    </tr>
+</table>
+
+<table class="center" table style="background-color: lightyellow; margin-top:50px">
+
+    <form action="/create" method="post">
+        <tr>
+            <td> <input id="wishlist-name" navn="navn" placeholder="Wishlist name"> </td>
+            <td>   <button type="submit">Create wishlist</button>
+            </td>
+        </tr>
+</table>
+
+</body>
+</html>
