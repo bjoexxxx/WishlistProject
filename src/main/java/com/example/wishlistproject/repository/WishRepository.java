@@ -86,7 +86,7 @@ public class WishRepository {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-        return wishes; //todo
+        return wishes;
     }
 
     public void createWishlist(Wishlist wishlist, int userId) {
