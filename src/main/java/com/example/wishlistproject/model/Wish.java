@@ -2,15 +2,24 @@ package com.example.wishlistproject.model;
 
 public class Wish {
 
+    private int wishID;
     private String wish_name;
     private double wish_price;
+    private int wishlistID;
 
-    public Wish(String wish_name, double wish_price) {
+    public Wish(int wishID, String wish_name, double wish_price, int wishlistID) {
+        this.wishID = wishID;
         this.wish_name = wish_name;
         this.wish_price = wish_price;
+        this.wishlistID = wishlistID;
     }
 
-    public Wish() {
+    public int getWishID(){
+        return wishID;
+    }
+
+    public void setWishID(int wishID){
+        this.wishID = wishID;
     }
 
     public String getWish_name() {
