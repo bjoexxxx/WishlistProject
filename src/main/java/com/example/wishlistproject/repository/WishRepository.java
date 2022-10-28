@@ -27,7 +27,8 @@ public class WishRepository {
 
     private String pstsGetAll = "SELECT * FROM wishlist";
     private String pstsAddUser = "INSERT INTO 'user' (first_name,last_name) VALUES (?,?)";
-    private String pstsGetAllWishlists = "select * from wishlist";
+    private String pstsGetAllWishlists = "SELECT * FROM wishlist";
+    private String pstsGetSpecificWishlist = "SELECT * FROM wishlist WHERE id=?";
 
     public List<Wishlist> getAllWishLists() {
 
