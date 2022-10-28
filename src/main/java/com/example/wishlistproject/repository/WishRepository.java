@@ -47,6 +47,8 @@ public class WishRepository {
 
 
         } catch (SQLException e) {
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
 
