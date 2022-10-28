@@ -1,7 +1,7 @@
 package com.example.wishlistproject.repository;
 
-import com.example.wishlistproject.model.User;
 import com.example.wishlistproject.model.Wishlist;
+import com.example.wishlistproject.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -29,16 +29,20 @@ public class WishRepository {
     private String pstsAddUser = "INSERT INTO 'user' (first_name,last_name) VALUES (?,?)";
     private String pstsGetAllWishlists = "select * from wishlist";
 
-    public List<Object> getAll() {
+    public List<Wishlist> getAll() {
 
 
-        List<Object> list = new LinkedList<>();
+        List<Wishlist> list = new LinkedList<>();
         try {
             Connection conn = DriverManager.getConnection(db_url, uid, pas);
             PreparedStatement psts = conn.prepareStatement(pstsGetAll);
             ResultSet resultSet = psts.executeQuery();
             while (resultSet.next()) {
-                list.add(new Object());
+                int id = resultSet.getInt(1);
+                String name = resultSet.getString(2);
+                int userid = resultSet.getInt(3);
+                list.add(new Wishlist(name, id));
+                System.out.println(id + name + userid);
 
             }
 
