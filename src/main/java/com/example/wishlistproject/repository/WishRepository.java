@@ -66,6 +66,7 @@ public class WishRepository {
             throw new RuntimeException(e);
         }
         return list; //Fixed mayby?
+
     }
 
     public Object findWishesById(int wishlistId) {
