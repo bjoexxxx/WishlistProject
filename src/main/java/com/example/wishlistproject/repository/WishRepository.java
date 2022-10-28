@@ -50,4 +50,11 @@ public class WishRepository {
     }
 
 
+    public Object getAllWishlists() {
+        return null; //todo
+    }
+
+    public Object findWishesById(int wishlistId) {
+        return null; //todo
+    }
 }
