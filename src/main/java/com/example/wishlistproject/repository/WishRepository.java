@@ -26,6 +26,7 @@ public class WishRepository {
 
     private String pstsGetAll = "SELECT * FROM wish";
     private String pstsAddUser = "INSERT INTO 'user' (first_name,last_name) VALUES (?,?)";
+    private String pstsGetAllWishlists = "select * from wishlist";
 
     public List<Wishlist> getAll() {
 
@@ -55,8 +56,22 @@ public class WishRepository {
     }
 
 
-    public Object getAllWishlists() {
-        return null; //todo
+    public List<Object> getAllWishlists() {
+        List<Object> list = new LinkedList();
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsGetAllWishlists);
+            ResultSet resultSet = psts.executeQuery();
+
+            while (resultSet.next()){
+                list.add(new Object());
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list; //Fixed mayby?
+
     }
 
     public Object findWishesById(int wishlistId) {
