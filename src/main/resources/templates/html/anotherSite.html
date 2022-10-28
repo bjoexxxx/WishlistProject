@@ -27,12 +27,10 @@
   <tr>
     <th>Ønskeliste navn</th>
     <th>ønskliste nr</th>
-
   </tr>
   <tr th:each="w : ${wishes}">
     <td> <span th:text="${w.wish_user}">user</span> </td>
     <td> <span th:text="${w.wish_id}">id</span> </td>
-
   </tr>
 </table>
 
