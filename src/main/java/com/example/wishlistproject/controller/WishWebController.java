@@ -18,6 +18,7 @@ public class WishWebController {
 
     public WishWebController(WishRepository p) {
         wishRepository = p;
+
     }
 
     @GetMapping("/")
