@@ -27,14 +27,12 @@ public class WishRepository {
 
 
 
-    private String pstsGetAll = "SELECT * FROM wishlist";
-    private String pstsGetAllWishlists = "SELECT * FROM wishlist";
-    private String pstsGetSpecificWishlist = "SELECT * FROM wish WHERE wishlistid=?";
-
-    private String pstsCreateWish = "insert into `wish`(`name`,cost,wishlistid) VALUES(?,?,?)";
-    private String pstsCreateUser = "insert into `user`(first_name,last_name) VALUES(?,?)";
-    private String pstsFindUserIDByName = "select * from `user` where first_name='?' and last_name='?'";
-
+    private String pstsGetAll = "SELECT * FROM wishlist;";
+    private String pstsGetAllWishlists = "SELECT * FROM wishlist;";
+    private String pstsGetSpecificWishlist = "SELECT * FROM wish WHERE wishlistid=?;";
+    private String pstsCreateWishlist = "insert into `wishlist`(`name`,userid) VALUES(?,?);";
+    private String pstsCreateUser = "insert into `user`(first_name,last_name) VALUES(?,?);";
+    private String pstsFindUserIDByName = "select * from `user` where first_name=? and last_name=?;";
 
     public List<Wishlist> getAllWishLists() {
 
@@ -57,7 +55,6 @@ public class WishRepository {
         } catch (SQLException e) {
             System.out.println("Couldn't connect to db");
             e.printStackTrace();
-            throw new RuntimeException(e);
         }
 
 
@@ -67,8 +64,6 @@ public class WishRepository {
 
 
     public Object selectWishlist(int wishlistId) {
-
-
         List<Wish> wishes = new LinkedList<>();
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
@@ -88,26 +83,23 @@ public class WishRepository {
         } catch (SQLException e){
             System.out.println("Couldn't connect to db");
             e.printStackTrace();
-            throw new RuntimeException(e);
         }
         return wishes;
     }
 
-    public void createWishlist(Wishlist wishlist, int userId) {
+    public void createWishlist(Wishlist wishlist) {
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
             PreparedStatement psts = conn.prepareStatement(pstsCreateWishlist);
             psts.setString(1,wishlist.getWishlist_name());
-            psts.setInt(2,userId);
-            psts.executeQuery();
+            psts.setInt(2,wishlist.getWishlist_userId());
+            psts.executeUpdate();
 
 
         } catch (SQLException e){
             System.out.println("Couldn't connect to db");
             e.printStackTrace();
-            throw new RuntimeException(e);
         }
-        // TODO
     }
 
     public void createUser(User user) {
@@ -116,43 +108,30 @@ public class WishRepository {
             PreparedStatement psts = conn.prepareStatement(pstsCreateUser);
             psts.setString(1,user.getFirst_name());
             psts.setString(2,user.getLast_name());
-
+            psts.executeUpdate();
         } catch (SQLException e){
             System.out.println("Couldn't connect to db");
             e.printStackTrace();
-            throw new RuntimeException(e);
         }
-        //TODO
-
 
     }
 
 
-    public int findUserIdByName(String userFirstName, String userLastName) {
+    public int findUserIdByName(User user) {
         int userID = 0;
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
             PreparedStatement psts = conn.prepareStatement(pstsFindUserIDByName);
-            psts.setString(1,userFirstName);
-            psts.setString(2,userLastName);
+            psts.setString(1,user.getFirst_name());
+            psts.setString(2,user.getLast_name());
             ResultSet resultSet = psts.executeQuery();
+            resultSet.next();
             userID = resultSet.getInt(1);
-
 
         } catch (SQLException e){
             System.out.println("Couldn't connect to db");
             e.printStackTrace();
-            throw new RuntimeException(e);
         }
-        return userID; //TODO
+        return userID;
     }
-
-    public void createWish(User user) {
-
-    }
-
-    //public Object selectReservation(int id) {}
-
-
-
 }
