@@ -30,9 +30,10 @@ public class WishRepository {
     private String pstsGetAll = "SELECT * FROM wishlist";
     private String pstsGetAllWishlists = "SELECT * FROM wishlist";
     private String pstsGetSpecificWishlist = "SELECT * FROM wish WHERE wishlistid=?";
-    private String pstsCreateWishlist = "insert into 'wishlist'(`name`,userid) VALUES(?,?)";
-    private String pstsCreateUser = "insert into 'user'(first_name,last_name) VALUES(?,?)";
-    private String pstsFindUserIDByName = "select * from 'user' where first_name='?' and last_name='?'";
+
+    private String pstsCreateWish = "insert into `wish`(`name`,cost,wishlistid) VALUES(?,?,?)";
+    private String pstsCreateUser = "insert into `user`(first_name,last_name) VALUES(?,?)";
+    private String pstsFindUserIDByName = "select * from `user` where first_name='?' and last_name='?'";
 
 
     public List<Wishlist> getAllWishLists() {
@@ -145,4 +146,13 @@ public class WishRepository {
         }
         return userID; //TODO
     }
+
+    public void createWish(User user) {
+
+    }
+
+    //public Object selectReservation(int id) {}
+
+
+
 }

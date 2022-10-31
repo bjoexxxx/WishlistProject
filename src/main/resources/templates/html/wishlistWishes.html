@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>hey</title>
+    <title>Den store Ønskeliste</title>
     <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
 
 
@@ -29,14 +29,15 @@
         <th>Wish ID</th>
         <th>Wish Name</th>
         <th>Price</th>
-        <th>WishlistID</th>
+        <th>Is Reserved</th>
     </tr>
     <tr th:each="w : ${wishes}">
-
-           <td> <span th:text="${w.wishID}">Id</span> </td>
+        <td> <span th:text="${w.wishID}">Id</span> </td>
         <td> <span th:text="${w.wish_name}">Name</span></td>
-        <td>  <span th:text="${w.wish_price}">Price</span> kr.- </td>
-        <td>   <span th:text="${w.wishlistID}">WishlistID</span></td>
+        <td> <span th:text="${w.wish_price}">Price</span> kr.- </td>
+    </tr>
+    <tr th:each="r : ${reservations}">
+        <td> <span th:text="${r.isReserved}">false</span> </td>
     </tr>
 </table>
 
@@ -44,8 +45,8 @@
 
     <form action="/create" method="post">
         <tr>
-            <td> <input id="wish-name" navn="navn" placeholder="Wish/product name"> </td>
-            <td> <input id="wish-price" navn="navn" placeholder="Wish price"> </td>
+            <td> <input id="wish-name" name="name" placeholder="Wish/product name"> </td>
+            <td> <input id="wish-price" name="price" placeholder="Wish price"> </td>
             <td>   <button type="submit">Create wish</button>
             </td>
         </tr>

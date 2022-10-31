@@ -39,6 +39,7 @@ public class WishWebController {
     @GetMapping("/showWishes/{id}")
     public String showWishes(@PathVariable("id") int id, Model model) {
         model.addAttribute("wishes", wishRepository.selectWishlist(id));
+        //model.addAttribute("reservations", wishRepository.selectReservation(id));
         return "html/wishlistWishes";
     }
 
@@ -64,11 +65,27 @@ public class WishWebController {
 
         wishRepository.createUser(user);
         int userId = wishRepository.findUserIdByName(userFirstName, userLastName);
-        model.addAttribute("userId",userId);
+        model.addAttribute("userId", userId);
         wishRepository.createWishlist(newWishlist, userId);
 
 
         return "redirect:/";
+    }
+
+        @PostMapping("/createWish{wishlistID}")
+        public String createWish(
+                @PathVariable("wishlistID") int id,
+                Model model,
+                @RequestParam("name") String wishName,
+                @RequestParam("price") String wishPrice) {
+            model.addAttribute("name", wishName);
+            model.addAttribute("price", wishPrice);
+
+
+
+
+
+            return "redirect:/showWishes/{id}";
 
 
     }
