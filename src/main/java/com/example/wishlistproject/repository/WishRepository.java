@@ -28,10 +28,11 @@ public class WishRepository {
 
 
     private String pstsGetAll = "SELECT * FROM wishlist";
-    private String pstsAddUser = "INSERT INTO 'user' (first_name,last_name) VALUES (?,?)";
     private String pstsGetAllWishlists = "SELECT * FROM wishlist";
     private String pstsGetSpecificWishlist = "SELECT * FROM wish WHERE wishlistid=?";
     private String pstsCreateWishlist = "insert into 'wishlist'(`name`,userid) VALUES(?,?)";
+    private String pstsCreateUser = "insert into 'user'(first_name,last_name) VALUES";
+    private String pstsFindUserIDByName = "select * from 'user' where first_name='?' and last_name='?'";
 
     public List<Wishlist> getAllWishLists() {
 
@@ -108,11 +109,35 @@ public class WishRepository {
     }
 
     public void createUser(User user) {
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsCreateUser);
+
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
         //TODO
     }
 
 
     public int findUserIdByName(String userFirstName, String userLastName) {
-        return 0; //TODO
+        int userID = 0;
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsFindUserIDByName);
+            psts.setString(1,userFirstName);
+            psts.setString(2,userLastName);
+            ResultSet resultSet = psts.executeQuery();
+            userID = resultSet.getInt(1);
+
+
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+        return userID; //TODO
     }
 }
