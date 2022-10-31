@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>hey</title>
+  <title>Wishlist</title>
   <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
 
 
@@ -40,12 +40,15 @@
 
 <table class="center" table style="background-color: lightyellow; margin-top:50px">
 
-  <form action="/create" method="post">
+  <form action="/createwishlist" method="post">
     <tr>
-      <td> <input id="wishlist-name" navn="navn" placeholder="Wishlist name"> </td>
+      <td> <input id="wishlist-name" name="wishlist_name" placeholder="Wishlist name"> </td>
+      <td> <input id="user_first-name" name="user_first_name" placeholder="First name"> </td>
+      <td> <input id="user_last-name" name="user_last_name" placeholder="Last name"> </td>
       <td>   <button type="submit">Create wishlist</button>
       </td>
     </tr>
+  </form>
 </table>
 
 </body>
