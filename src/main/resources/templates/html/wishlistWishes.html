@@ -36,20 +36,19 @@
         <td> <span th:text="${w.wish_name}">Name</span></td>
         <td> <span th:text="${w.wish_price}">Price</span> kr.- </td>
     </tr>
-    <tr th:each="r : ${reservations}">
-        <td> <span th:text="${r.isReserved}">false</span> </td>
-    </tr>
 </table>
 
 <table class="center" table style="background-color: lightyellow; margin-top:50px">
 
-    <form action="/create" method="post">
+    <form action="/createWish/" method="post">
         <tr>
             <td> <input id="wish-name" name="name" placeholder="Wish/product name"> </td>
             <td> <input id="wish-price" name="price" placeholder="Wish price"> </td>
+            <td> <input type="hidden" id="" name="wishListId" th:attr="value=${wishListId}"> </td>
             <td>   <button type="submit">Create wish</button>
             </td>
         </tr>
+    </form>
 </table>
 
 </body>

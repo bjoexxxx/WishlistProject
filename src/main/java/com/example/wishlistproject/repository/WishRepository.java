@@ -34,6 +34,8 @@ public class WishRepository {
     private String pstsCreateUser = "insert into `user`(first_name,last_name) VALUES(?,?);";
     private String pstsFindUserIDByName = "select * from `user` where first_name=? and last_name=?;";
 
+    private String pstsCreateWish = "INSERT INTO `wish` (`name`,`cost`,`wishlistid`) VALUES (?,?,?);";
+
     public List<Wishlist> getAllWishLists() {
 
 
@@ -134,4 +136,20 @@ public class WishRepository {
         }
         return userID;
     }
+
+    public void createWish(Wish wish, int wishlistid){
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsCreateWish);
+            psts.setString(1,wish.getWish_name());
+            psts.setDouble(2,wish.getWish_price());
+            psts.setInt(3,wishlistid);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
+    }
+
 }
