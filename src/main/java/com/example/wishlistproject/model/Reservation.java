@@ -3,10 +3,12 @@ package com.example.wishlistproject.model;
 public class Reservation {
 
     int wishid;
+    String userid;
     boolean isReserved;
 
-    public Reservation(int wishid, boolean isReserved) {
+    public Reservation(int wishid, String userid, boolean isReserved) {
         this.wishid = wishid;
+        this.userid = userid;
         this.isReserved = isReserved;
     }
 
@@ -21,6 +23,14 @@ public class Reservation {
         this.wishid = wishid;
     }
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
     public boolean isReserved() {
         return isReserved;
     }
@@ -33,6 +43,7 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "wishid=" + wishid +
+                ", userid='" + userid + '\'' +
                 ", isReserved=" + isReserved +
                 '}';
     }

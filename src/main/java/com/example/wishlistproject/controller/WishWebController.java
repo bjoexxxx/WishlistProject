@@ -45,11 +45,6 @@ public class WishWebController {
         return "html/wishlistWishes";
     }
 
-    @GetMapping("/create")
-    public String derp() {
-        return null;
-    }
-
 
     @PostMapping("/createwishlist")
     public String createWishlist(
