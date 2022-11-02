@@ -118,6 +118,13 @@ public class WishWebController {
     //TODO RESERVE
     //TODO EDIT
     //TODO DELETE
+    @GetMapping("/deleteWishList/{id}")
+    public String deleteWishList(@PathVariable("id") int id) {
+
+        wishRepository.deleteWishList(id);
+
+        return "html/index";
+    }
     //TODO SHOWWISH/{WISHLIST}/{WISH}
 
 

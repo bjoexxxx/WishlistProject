@@ -36,6 +36,11 @@ public class WishRepository {
 
     private String pstsCreateWish = "INSERT INTO `wish` (`name`,`cost`,`wishlistid`) VALUES (?,?,?);";
 
+    private String pstsDeleteWishList = "DELETE FROM `wishlist` WHERE id=?;";
+
+    private String pstsDeleteAllWishesFromWishList = "DELETE FROM `wish` WHERE wishlistid=?;";
+
+
     public List<Wishlist> getAllWishLists() {
 
 
@@ -153,4 +158,32 @@ public class WishRepository {
 
     }
 
+    public void deleteWishList(int wishListId){
+        // Vi fjerner først alle wishes fra wishlist, før vi kan slette den
+        deleteAllWishesFromWishList(wishListId);
+
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsDeleteWishList);
+            psts.setInt(1, wishListId);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
+    }
+
+    private void deleteAllWishesFromWishList(int wishListId){
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsDeleteAllWishesFromWishList);
+            psts.setInt(1, wishListId);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
+    }
 }
