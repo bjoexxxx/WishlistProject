@@ -123,7 +123,7 @@ public class WishWebController {
 
         wishRepository.deleteWishList(id);
 
-        return "html/index";
+        return "redirect:/";
     }
     //TODO SHOWWISH/{WISHLIST}/{WISH}
 
