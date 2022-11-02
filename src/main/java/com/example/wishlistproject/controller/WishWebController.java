@@ -110,13 +110,35 @@ public class WishWebController {
 
         wishRepository.createWish(wish,id);
 
-        return "redirect:/showWishes/" + id ;//+ id;
+        return "redirect:/showWishes/" + id ;
+    }
+    @GetMapping("/updateWish/{id}")
+    public String updateWishGet(@PathVariable("id") int id, Model model) {
+        Wish wish = wishRepository.selectWish(id);
+        model.addAttribute("wishId",id);
+        model.addAttribute("name",wish.getWish_name());
+        model.addAttribute("price",wish.getWish_price());
+        return "html/updateWish";
+    }
 
+    @GetMapping("/updateWish")
+    public String updateWishGet(@PathVariable("id") int id,
+                                @PathVariable("name") String name,
+                                @PathVariable("price") double price,
+                                Model model) {
+
+        Wish wish = wishRepository.selectWish(id);
+        model.addAttribute("wishId",id);
+        model.addAttribute("name",wish.getWish_name());
+        model.addAttribute("price",wish.getWish_price());
+
+        return "html/updateWish";
     }
 
 
+
     //TODO RESERVE
-    //TODO EDIT
+    //TODO UPDATE
     //TODO DELETE
     //TODO SHOWWISH/{WISHLIST}/{WISH}
 

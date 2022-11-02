@@ -35,7 +35,7 @@
         <td> <span th:text="${w.wishID}">Id</span> </td>
         <td> <span th:text="${w.wish_name}">Name</span></td>
         <td> <span th:text="${w.wish_price}">Price</span> kr.- </td>
-        <td> <span th:text="${w.wish_IsReserved}">Price</span> kr.- </td>
+        <td> <span>Reserved</span> kr.- </td>
         <td> <span> <a th:href="@{'/updateWish/' + ${w.wishID}}">Update</a> </span> </td>
         <td> <span> <a th:href="@{'/deleteWish/' + ${w.wishID}}">Delete</a> </span> </td>
         <td> <span> <a th:href="@{'/reserveWish/' + ${w.wishID}}">Reserve</a> </span> </td>
