@@ -115,7 +115,7 @@ public class WishWebController {
 
         wishRepository.createWish(wish,id);
 
-        return "showWishes/" + id;
+        return "redirect:/showWishes/" + id ;//+ id;
 
     }
 
