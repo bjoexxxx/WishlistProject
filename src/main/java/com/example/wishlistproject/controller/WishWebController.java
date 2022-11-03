@@ -147,6 +147,16 @@ public class WishWebController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/deleteWish/{id}")
+    public String deleteWish(@PathVariable("id") int id){
+        Wish wish = wishRepository.selectWish(id);
+
+        int wishlistIDid = wish.getWishlistID();
+        wishRepository.deleteWish(id);
+        return "redirect:/showWishes/"+wishlistIDid;
+    }
+
     //TODO SHOWWISH/{WISHLIST}/{WISH}
 
 
