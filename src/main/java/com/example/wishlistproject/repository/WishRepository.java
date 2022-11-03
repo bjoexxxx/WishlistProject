@@ -5,8 +5,6 @@ import com.example.wishlistproject.model.Wishlist;
 import com.example.wishlistproject.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-
-import javax.management.Query;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,7 +34,6 @@ public class WishRepository {
 
     public List<Wishlist> getAllWishLists() {
 
-
         List<Wishlist> wishlists = new LinkedList<>();
         try {
             Connection conn = DriverManager.getConnection(db_url, uid, pas);
@@ -50,16 +47,11 @@ public class WishRepository {
                 System.out.println(id + name + userid);
 
             }
-
-
         } catch (SQLException e) {
             System.out.println("Couldn't connect to db");
             e.printStackTrace();
         }
-
-
         return wishlists;
-
     }
 
 
