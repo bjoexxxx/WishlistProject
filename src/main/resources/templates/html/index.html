@@ -25,12 +25,16 @@
     <th>Wishlist name</th>
     <th>Wishlist nr.</th>
     <th>See wishes in list</th>
+    <th>Delete wish</th>
 
   </tr>
   <tr th:each="w : ${wishlists}">
     <td> <span th:text="${w.wishlist_name}">Name</span> </td>
     <td> <span th:text="${w.wishlist_userId}">id</span> </td>
     <td> <span> <a th:href="@{'/showWishes/' + ${w.wishlistId}}">>Press to see wishes</a> </span> </td>
+    <td> <span> <a th:href="@{'/deleteWishList/' + ${w.wishlistId}}">>Press to delete wishlist</a> </span> </td>
+
+
   </tr>
 </table>
 
@@ -45,6 +49,7 @@
       </td>
     </tr>
   </form>
+
 </table>
 
 </body>
