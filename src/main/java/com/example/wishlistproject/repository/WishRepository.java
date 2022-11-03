@@ -6,6 +6,7 @@ import com.example.wishlistproject.model.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
+import javax.management.Query;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +37,11 @@ public class WishRepository {
     private String pstsCreateWish = "INSERT INTO `wish` (`name`,`cost`,`wishlistid`) VALUES (?,?,?);";
     private String pstsUpdateWish = "UPDATE `wish` SET `name` = ?, cost = ? WHERE id = ?;";
     private String pstsSelectWish = "SELECT `name`,cost FROM wish WHERE id = ?;";
+
+    private String pstsDeleteWishList = "DELETE FROM `wishlist` WHERE id=?;";
+
+    private String pstsDeleteAllWishesFromWishList = "DELETE FROM `wish` WHERE wishlistid=?;";
+
 
     public List<Wishlist> getAllWishLists() {
 
@@ -154,6 +160,34 @@ public class WishRepository {
 
     }
 
+    public void deleteWishList(int wishListId){
+        // Vi fjerner først alle wishes fra wishlist, før vi kan slette den
+        deleteAllWishesFromWishList(wishListId);
+
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsDeleteWishList);
+            psts.setInt(1, wishListId);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
+    }
+
+    private void deleteAllWishesFromWishList(int wishListId){
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsDeleteAllWishesFromWishList);
+            psts.setInt(1, wishListId);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
+    }
     public void updateWish(Wish wish, int wishid){
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
