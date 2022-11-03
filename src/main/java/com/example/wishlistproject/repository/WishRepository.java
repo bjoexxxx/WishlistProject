@@ -191,7 +191,7 @@ public class WishRepository {
             PreparedStatement psts = conn.prepareStatement(pstsUpdateWish);
             psts.setString(1,wish.getName());
             psts.setDouble(2,wish.getPrice());
-            psts.setInt(3,wish.getWishID());
+            psts.setInt(3,wish.getId());
             psts.executeUpdate();
         } catch (SQLException e){
             System.out.println("Couldn't connect to db");

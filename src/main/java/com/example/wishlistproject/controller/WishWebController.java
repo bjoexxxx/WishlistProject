@@ -130,9 +130,9 @@ public class WishWebController {
 
         Wish wish = wishRepository.selectWish(wishId);
 
-        wish.setWish_name(name);
-        wish.setWish_price(price);
-        wish.setWishID(wishId);
+        wish.setName(name);
+        wish.setPrice(price);
+        wish.setId(wishId);
 
         wishRepository.updateWish(wish);
 
