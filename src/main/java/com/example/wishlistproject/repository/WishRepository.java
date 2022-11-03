@@ -34,6 +34,13 @@ public class WishRepository {
     private String pstsCreateUser = "insert into `user`(first_name,last_name) VALUES(?,?);";
     private String pstsFindUserIDByName = "select * from `user` where first_name=? and last_name=?;";
 
+    private String pstsCreateWish = "INSERT INTO `wish` (`name`,`cost`,`wishlistid`) VALUES (?,?,?);";
+
+    private String pstsDeleteWishList = "DELETE FROM `wishlist` WHERE id=?;";
+
+    private String pstsDeleteAllWishesFromWishList = "DELETE FROM `wish` WHERE wishlistid=?;";
+
+
     public List<Wishlist> getAllWishLists() {
 
 
@@ -133,5 +140,50 @@ public class WishRepository {
             e.printStackTrace();
         }
         return userID;
+    }
+
+    public void createWish(Wish wish, int wishlistid){
+
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsCreateWish);
+            psts.setString(1,wish.getWish_name());
+            psts.setDouble(2,wish.getWish_price());
+            psts.setInt(3,wishlistid);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteWishList(int wishListId){
+        // Vi fjerner først alle wishes fra wishlist, før vi kan slette den
+        deleteAllWishesFromWishList(wishListId);
+
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsDeleteWishList);
+            psts.setInt(1, wishListId);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
+    }
+
+    private void deleteAllWishesFromWishList(int wishListId){
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsDeleteAllWishesFromWishList);
+            psts.setInt(1, wishListId);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
     }
 }
