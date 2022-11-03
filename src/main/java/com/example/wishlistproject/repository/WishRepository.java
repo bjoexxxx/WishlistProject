@@ -53,8 +53,6 @@ public class WishRepository {
                 String name = resultSet.getString(2);
                 int userid = resultSet.getInt(3);
                 wishlists.add(new Wishlist(name, id, userid));
-                System.out.println(id + name + userid);
-
             }
         } catch (SQLException e) {
             System.out.println("Couldn't connect to db");
@@ -92,8 +90,8 @@ public class WishRepository {
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
             PreparedStatement psts = conn.prepareStatement(pstsCreateWishlist);
-            psts.setString(1,wishlist.getWishlist_name());
-            psts.setInt(2,wishlist.getWishlist_userId());
+            psts.setString(1,wishlist.getName());
+            psts.setInt(2,wishlist.getUserId());
             psts.executeUpdate();
 
 
@@ -126,8 +124,9 @@ public class WishRepository {
             psts.setString(1,user.getFirst_name());
             psts.setString(2,user.getLast_name());
             ResultSet resultSet = psts.executeQuery();
-            resultSet.next();
-            userID = resultSet.getInt(1);
+            while(resultSet.next()) {
+                userID = resultSet.getInt(1);
+            }
 
         } catch (SQLException e){
             System.out.println("Couldn't connect to db");
@@ -141,8 +140,8 @@ public class WishRepository {
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
             PreparedStatement psts = conn.prepareStatement(pstsCreateWish);
-            psts.setString(1,wish.getWish_name());
-            psts.setDouble(2,wish.getWish_price());
+            psts.setString(1,wish.getName());
+            psts.setDouble(2,wish.getPrice());
             psts.setInt(3,wishlistid);
             psts.executeUpdate();
         } catch (SQLException e){
@@ -184,8 +183,8 @@ public class WishRepository {
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
             PreparedStatement psts = conn.prepareStatement(pstsUpdateWish);
-            psts.setString(1,wish.getWish_name());
-            psts.setDouble(2,wish.getWish_price());
+            psts.setString(1,wish.getName());
+            psts.setDouble(2,wish.getPrice());
             psts.setInt(3,wishid);
             psts.executeUpdate();
         } catch (SQLException e){
@@ -208,8 +207,8 @@ public class WishRepository {
                 resultSet.next();
                     String name = resultSet.getString(1);
                     double price = resultSet.getDouble( 2);
-                    newWish.setWish_name(name);
-                    newWish.setWish_price(price);
+                    newWish.setName(name);
+                    newWish.setPrice(price);
 
             } catch (SQLException e){
                 System.out.println("Couldn't connect to db");

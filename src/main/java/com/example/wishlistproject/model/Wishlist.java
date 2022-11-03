@@ -2,49 +2,49 @@ package com.example.wishlistproject.model;
 
 public class Wishlist {
 
-    private String wishlist_name;
-    private int wishlist_userId;
-    private int wishlistId;
+    private String name;
+    private int userId;
+    private int id;
 
-    public Wishlist(String wishlist_name, int wishlistId, int wishlist_userId) {
-        this.wishlist_name = wishlist_name;
-        this.wishlist_userId = wishlist_userId;
-        this.wishlistId = wishlistId;
+    public Wishlist(String name, int id, int userId) {
+        this.name = name;
+        this.userId = userId;
+        this.id = id;
     }
 
     public Wishlist() {
     }
 
-    public String getWishlist_name() {
-        return wishlist_name;
+    public String getName() {
+        return name;
     }
 
-    public void setWishlist_name(String wishlist_name) {
-        this.wishlist_name = wishlist_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getWishlist_userId() {
-        return wishlist_userId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setWishlist_userId(int wishlist_userId) {
-        this.wishlist_userId = wishlist_userId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getWishlistId() {
-        return wishlistId;
+    public int getId() {
+        return id;
     }
 
-    public void setWishlistId(int wishlistId) {
-        this.wishlistId = wishlistId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return "Wishlist{" +
-                "wishlist_name='" + wishlist_name + '\'' +
-                ", wishlist_userId=" + wishlist_userId +
-                ", wishlistId=" + wishlistId +
+                "name='" + name + '\'' +
+                ", userId=" + userId +
+                ", id=" + id +
                 '}';
     }
 }
