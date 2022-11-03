@@ -69,8 +69,8 @@ public class WishWebController {
         }
 
 
-        newWishlist.setWishlist_name(wishlistName);
-        newWishlist.setWishlist_userId(userId);
+        newWishlist.setName(wishlistName);
+        newWishlist.setUserId(userId);
 
         model.addAttribute("userId", userId);
         wishRepository.createWishlist(newWishlist);
@@ -105,8 +105,8 @@ public class WishWebController {
 
         Wish wish = new Wish();
 
-        wish.setWish_name(wishName);
-        wish.setWish_price(wishPrice);
+        wish.setName(wishName);
+        wish.setPrice(wishPrice);
 
         wishRepository.createWish(wish,id);
 
@@ -117,8 +117,9 @@ public class WishWebController {
                                 Model model) {
         Wish wish = wishRepository.selectWish(id);
         model.addAttribute("wishId",id);
-        model.addAttribute("name",wish.getWish_name());
-        model.addAttribute("price",wish.getWish_price());
+        model.addAttribute("name",wish.getName());
+        model.addAttribute("price",wish.getPrice());
+
         return "html/updateWish";
     }
 
@@ -142,9 +143,6 @@ public class WishWebController {
 
 
 
-    //TODO RESERVE
-    //TODO UPDATE
-    //TODO DELETE
     @GetMapping("/deleteWishList/{id}")
     public String deleteWishList(@PathVariable("id") int id) {
 
@@ -161,8 +159,6 @@ public class WishWebController {
         wishRepository.deleteWish(id);
         return "redirect:/showWishes/"+wishlistIDid;
     }
-
-    //TODO SHOWWISH/{WISHLIST}/{WISH}
 
 
 }
