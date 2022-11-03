@@ -33,6 +33,8 @@ public class WishRepository {
     private String pstsFindUserIDByName = "select * from `user` where first_name=? and last_name=?;";
 
     private String pstsCreateWish = "INSERT INTO `wish` (`name`,`cost`,`wishlistid`) VALUES (?,?,?);";
+    private String pstsUpdateWish = "UPDATE `wish` SET `name` = ?, cost = ? WHERE id = ?;";
+    private String pstsSelectWish = "SELECT `name`,cost FROM wish WHERE id = ?;";
 
     private String pstsDeleteWishList = "DELETE FROM `wishlist` WHERE id=?;";
 
@@ -178,4 +180,48 @@ public class WishRepository {
         }
 
     }
+    public void updateWish(Wish wish, int wishid){
+        try {
+            Connection conn = DriverManager.getConnection(db_url,uid,pas);
+            PreparedStatement psts = conn.prepareStatement(pstsUpdateWish);
+            psts.setString(1,wish.getWish_name());
+            psts.setDouble(2,wish.getWish_price());
+            psts.setInt(3,wishid);
+            psts.executeUpdate();
+        } catch (SQLException e){
+            System.out.println("Couldn't connect to db");
+            e.printStackTrace();
+        }
+
+    }
+
+    public Wish selectWish(int wishId){
+
+        Wish newWish = new Wish();
+
+            try {
+                Connection conn = DriverManager.getConnection(db_url,uid,pas);
+                PreparedStatement psts = conn.prepareStatement(pstsSelectWish);
+                psts.setInt(1,wishId);
+                ResultSet resultSet = psts.executeQuery();
+
+                resultSet.next();
+                    String name = resultSet.getString(1);
+                    double price = resultSet.getDouble( 2);
+                    newWish.setWish_name(name);
+                    newWish.setWish_price(price);
+
+            } catch (SQLException e){
+                System.out.println("Couldn't connect to db");
+                e.printStackTrace();
+            }
+            return newWish;
+        }
+
+        private void findWishlistIdFromWish(Wish wish){
+
+
+
+        }
+
 }
