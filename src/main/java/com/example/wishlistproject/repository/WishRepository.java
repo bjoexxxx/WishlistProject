@@ -191,13 +191,13 @@ public class WishRepository {
         }
 
     }
-    public void updateWish(Wish wish, int wishid){
+    public void updateWish(Wish wish){
         try {
             Connection conn = DriverManager.getConnection(db_url,uid,pas);
             PreparedStatement psts = conn.prepareStatement(pstsUpdateWish);
             psts.setString(1,wish.getWish_name());
             psts.setDouble(2,wish.getWish_price());
-            psts.setInt(3,wishid);
+            psts.setInt(3,wish.getWishID());
             psts.executeUpdate();
         } catch (SQLException e){
             System.out.println("Couldn't connect to db");
