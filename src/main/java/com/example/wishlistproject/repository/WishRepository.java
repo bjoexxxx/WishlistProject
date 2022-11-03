@@ -225,11 +225,7 @@ public class WishRepository {
             return newWish;
         }
 
-        private void findWishlistIdFromWish(Wish wish){
-
-
-
-        }
+        private void findWishlistIdFromWish(Wish wish){}
 
     public void deleteWish(int wishId){
         // Vi fjerner først alle wishes fra wishlist, før vi kan slette den
