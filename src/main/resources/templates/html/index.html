@@ -4,13 +4,9 @@
   <meta charset="UTF-8">
   <title>Wishlist</title>
   <link rel="stylesheet" th:href="@{/css/myStyles.css}" href="../../static/css/myStyles.css"/>
-
-
-
 </head>
 <body style="background-color:whitesmoke">
 <div style="background-color: white">
-
   <div>
     <img class="logocorner" src="/static/images/skyen.png" th:src="@{/images/skyen.png}" width="155,04" height="32,64">
   </div>
@@ -30,13 +26,12 @@
     <th>UserID</th>
     <th>See wishes in list</th>
     <th>Delete wish</th>
-
   </tr>
   <tr th:each="w : ${wishlists}">
-    <td> <span th:text="${w.wishlist_name}">Name</span> </td>
-    <td> <span th:text="${w.wishlist_userId}">id</span> </td>
-    <td> <span> <a th:href="@{'/showWishes/' + ${w.wishlistId}}">>Press to see wishes</a> </span> </td>
-    <td> <span> <a th:href="@{'/deleteWishList/' + ${w.wishlistId}}">>Press to delete wishlist</a> </span> </td>
+    <td> <span th:text="${w.name}">Name</span> </td>
+    <td> <span th:text="${w.userId}">id</span> </td>
+    <td> <span> <a th:href="@{'/showWishes/' + ${w.id}}">View Wishes</a> </span> </td>
+    <td> <span> <a th:href="@{'/deleteWishList/' + ${w.id}}">Delete Wishlist</a> </span> </td>
 
 
   </tr>

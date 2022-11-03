@@ -69,8 +69,8 @@ public class WishWebController {
         }
 
 
-        newWishlist.setWishlist_name(wishlistName);
-        newWishlist.setWishlist_userId(userId);
+        newWishlist.setName(wishlistName);
+        newWishlist.setUserId(userId);
 
         model.addAttribute("userId", userId);
         wishRepository.createWishlist(newWishlist);
@@ -105,41 +105,44 @@ public class WishWebController {
 
         Wish wish = new Wish();
 
-        wish.setWish_name(wishName);
-        wish.setWish_price(wishPrice);
+        wish.setName(wishName);
+        wish.setPrice(wishPrice);
 
         wishRepository.createWish(wish,id);
 
         return "redirect:/showWishes/" + id ;
     }
     @GetMapping("/updateWish/{id}")
-    public String updateWishGet(@PathVariable("id") int id, Model model) {
-        Wish wish = wishRepository.selectWish(id);
-        model.addAttribute("wishId",id);
-        model.addAttribute("name",wish.getWish_name());
-        model.addAttribute("price",wish.getWish_price());
-        return "html/updateWish";
-    }
-
-    @GetMapping("/updateWish")
     public String updateWishGet(@PathVariable("id") int id,
-                                @PathVariable("name") String name,
-                                @PathVariable("price") double price,
                                 Model model) {
-
         Wish wish = wishRepository.selectWish(id);
         model.addAttribute("wishId",id);
-        model.addAttribute("name",wish.getWish_name());
-        model.addAttribute("price",wish.getWish_price());
+        model.addAttribute("name",wish.getName());
+        model.addAttribute("price",wish.getPrice());
 
         return "html/updateWish";
     }
 
+    @PostMapping("/updateWish")
+    public String updateWishGet(@RequestParam("name") String name,
+                                @RequestParam("price") double price,
+                                @RequestParam("wishId") int wishId) {
+
+        Wish wish = wishRepository.selectWish(wishId);
+
+        wish.setName(name);
+        wish.setPrice(price);
+        wish.setId(wishId);
+
+        wishRepository.updateWish(wish);
+
+        int wishListId = wish.getWishlistID();
+
+        return "redirect:/showWishes/" + wishListId;
+    }
 
 
-    //TODO RESERVE
-    //TODO UPDATE
-    //TODO DELETE
+
     @GetMapping("/deleteWishList/{id}")
     public String deleteWishList(@PathVariable("id") int id) {
 
@@ -156,8 +159,6 @@ public class WishWebController {
         wishRepository.deleteWish(id);
         return "redirect:/showWishes/"+wishlistIDid;
     }
-
-    //TODO SHOWWISH/{WISHLIST}/{WISH}
 
 
 }
